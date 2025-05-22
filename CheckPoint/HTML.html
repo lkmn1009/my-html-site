@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanPose - Photography & Video</title>
+    <link rel="stylesheet" href="CSS.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__content container">
+            <img src="Img/Foto Profil.jpg" alt="Logo CleanPose" class="header__logo">
+            <h1 class="header__title">CleanPose</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="main_menu">
+            <nav class="category-nav" aria-label="Main Categories">
+                <button class="category-nav__button" data-dropdown-target="photographyContent">
+                    <div class="text_photography">Photography</div>
+                </button>
+                <button class="category-nav__button" data-dropdown-target="videoContent">
+                    <div class="text_photography">Video</div>
+                </button>
+                <button class="category-nav__button" data-dropdown-target="MusicContent">
+                    <div class="text_photography">Music/Remix</div>
+                </button>
+            </nav>
+        </div>
+        <div id="photographyContent" class="category-content">
+            <nav class="subcategory-nav" aria-label="Photography Subcategories">
+                <button class="subcategory-nav__button" data-submenu-target="photoOutdoor">Outdoor</button>
+                <button class="subcategory-nav__button" data-submenu-target="photoLamaran">Lamaran</button>
+                <button class="subcategory-nav__button" data-submenu-target="photoIndoor">Indoor</button>
+                <button class="subcategory-nav__button" data-submenu-target="photoEvent">Event</button>
+            </nav>
+            <div class="sub_menu">
+                <section id="photoOutdoor" class="slideshow-section" aria-labelledby="photoOutdoorButton">
+                    <div class="slideshow slideshow--photo">
+                        <div class="slideshow__container" data-category="photoOutdoor">
+                            <!-- Outdoor Images -->
+                            <div class="slideshow__item"><img src="Img/outdoor/1.jpg"
+                                    alt="Outdoor Photography Example 1"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/2.jpg"
+                                    alt="Outdoor Photography Example 2"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/3.jpg"
+                                    alt="Outdoor Photography Example 3"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/4.jpg"
+                                    alt="Outdoor Photography Example 4"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/5.jpg"
+                                    alt="Outdoor Photography Example 5"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/6.jpg"
+                                    alt="Outdoor Photography Example 6"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/7.jpg"
+                                    alt="Outdoor Photography Example 7"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/8.jpg"
+                                    alt="Outdoor Photography Example 8"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/9.jpg"
+                                    alt="Outdoor Photography Example 9"></div>
+                        </div>
+                        <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                            aria-label="Previous Slide">‹</button>
+                        <button class="slideshow__control slideshow__control--next" data-direction="1"
+                            aria-label="Next Slide">›</button>
+                        <div class="slideshow__pagination"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Other Photography Sections -->
+            <section id="photoLamaran" class="slideshow-section" aria-labelledby="photoLamaranButton">
+                <div class="slideshow slideshow--photo">
+                    <div class="slideshow__container" data-category="photoLamaran">
+                        <!-- Lamaran Images -->
+                        <div class="slideshow__item"><img src="Img/Lamaran/1.jpg" alt="Lamaran Photography Example 1">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/2.jpg" alt="Lamaran Photography Example 2">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/3.jpg" alt="Lamaran Photography Example 3">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/4.jpg" alt="Lamaran Photography Example 4">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/5.jpg" alt="Lamaran Photography Example 5">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/6.jpg" alt="Lamaran Photography Example 6">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/7.jpg" alt="Lamaran Photography Example 7">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/8.jpg" alt="Lamaran Photography Example 8">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/9.jpg" alt="Lamaran Photography Example 9">
+                        </div>
+                        <div class="slideshow__item"><img src="Img/Lamaran/10.jpg" alt="Lamaran Photography Example 10">
+                        </div>
+                    </div>
+                    <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                        aria-label="Previous Slide">‹</button>
+                    <button class="slideshow__control slideshow__control--next" data-direction="1"
+                        aria-label="Next Slide">›</button>
+                    <div class="slideshow__pagination"></div>
+                </div>
+            </section>
+
+            <section id="photoIndoor" class="slideshow-section" aria-labelledby="photoIndoorButton">
+                <div class="slideshow slideshow--photo">
+                    <div class="slideshow__container" data-category="photoIndoor">
+                        <div class="slideshow__item"><img src="img/indoor/1.jpg" alt="Indoor Photography Example 1">
+                        </div>
+                        <div class="slideshow__item"><img src="img/indoor/2.jpg" alt="Indoor Photography Example 2">
+                        </div>
+                        <div class="slideshow__item"><img src="img/indoor/3.jpg" alt="Indoor Photography Example 3">
+                        </div>
+                        <div class="slideshow__item"><img src="img/indoor/4.jpg" alt="Indoor Photography Example 4">
+                        </div>
+                        <div class="slideshow__item"><img src="img/indoor/5.jpg" alt="Indoor Photography Example 5">
+                        </div>
+                    </div>
+                    <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                        aria-label="Previous Slide">‹</button>
+                    <button class="slideshow__control slideshow__control--next" data-direction="1"
+                        aria-label="Next Slide">›</button>
+                    <div class="slideshow__pagination"></div>
+                </div>
+            </section>
+
+            <section id="photoEvent" class="slideshow-section" aria-labelledby="photoEventButton">
+                <div class="slideshow slideshow--photo">
+                    <div class="slideshow__container" data-category="photoEvent">
+                        <div class="slideshow__item"><img src="img/Event/1.jfif" alt="Event Photography Example 1">
+                        </div>
+                        <div class="slideshow__item"><img src="img/Event/2.jfif" alt="Event Photography Example 2">
+                        </div>
+                        <div class="slideshow__item"><img src="img/Event/3.jpg" alt="Event Photography Example 3"></div>
+                        <div class="slideshow__item"><img src="img/Event/4.jpg" alt="Event Photography Example 4"></div>
+                        <div class="slideshow__item"><img src="img/Event/5.jpg" alt="Event Photography Example 5"></div>
+                        <div class="slideshow__item"><img src="img/Event/6.jfif" alt="Event Photography Example 6">
+                        </div>
+                        <div class="slideshow__item"><img src="img/Event/7.jfif" alt="Event Photography Example 7">
+                        </div>
+                        <div class="slideshow__item"><img src="img/Event/8.JPG" alt="Event Photography Example 8"></div>
+                        <div class="slideshow__item"><img src="img/Event/9.jpg" alt="Event Photography Example 9"></div>
+                        <div class="slideshow__item"><img src="img/Event/10.jpg" alt="Event Photography Example 10">
+                        </div>
+                    </div>
+                    <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                        aria-label="Previous Slide">‹</button>
+                    <button class="slideshow__control slideshow__control--next" data-direction="1"
+                        aria-label="Next Slide">›</button>
+                    <div class="slideshow__pagination"></div>
+                </div>
+            </section>
+        </div>
+
+        <div id="videoContent" class="category-content">
+            <nav class="subcategory-nav" aria-label="Video Subcategories">
+                <button class="subcategory-nav__button" data-submenu-target="videoPROMOSI">Promosi</button>
+                <button class="subcategory-nav__button" data-submenu-target="videoSHORT_MOVIE">Short Movie</button>
+                <button class="subcategory-nav__button" data-submenu-target="videoCinematic">Other</button>
+            </nav>
+
+            <!-- Video PROMOSI Section -->
+            <section id="videoPROMOSI" class="slideshow-section slideshow-section--video-promo"
+                aria-labelledby="videoPROMOSIButton">
+                <div class="video-promo">
+                    <div class="video-promo__player-wrapper">
+                        <video id="promoVideoPlayer" class="video-promo__player" controls preload="metadata"
+                            playsinline>
+                            <source id="promoVideoSource" src="video/Promosi/Kacamata.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div class="video-promo__thumbnail-nav">
+
+                        <button class="video-promo__thumbnail" data-video-src="video/Promosi/Kacamata.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Kacamata"> <span>Kacamata</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-youtube-id="T5XO9dI4NPk">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Hoodie"> <span>BPLJSKB</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/Promosi/Hoodie.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Hoodie"> <span>Hoodie</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-youtube-id="g5gJ6XnW8e0">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Hoodie"> <span>SPMI</span>
+                        </button>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="videoSHORT_MOVIE" class="slideshow-section slideshow-section--video-promo"
+                aria-labelledby="videoSHORT_MOVIEButton">
+                <div class="video-promo">
+                    <div class="video-promo__player-wrapper">
+                        <video id="shortMoviePlayer" class="video-promo__player" controls preload="metadata"
+                            playsinline>
+                            <source id="shortMovieSource" src="video/Short_Movie/Home.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div class="video-promo__thumbnail-nav">
+                        <button class="video-promo__thumbnail" data-video-src="video/Short_Movie/Home.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Home"> <span>Home</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/Short_Movie/Stop-it.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Stop IT"> <span>Stop IT</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/Short_Movie/morning.mp4">
+                            <img src="IMG/thumbnail-youtube.jpg" alt="Youtube Video Thumbnail">
+                            <span>Youtube Video 1</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-youtube-id="Zo5GbEDh5NE">
+                            <img src="IMG/Foto Profil.jpg" alt="Youtube Example">
+                            <span>Youtube Video 2</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="videoCinematic" class="slideshow-section slideshow-section--video-promo"
+                aria-labelledby="videoSHORT_MOVIEButton">
+                <div class="video-promo">
+                    <div class="video-promo__player-wrapper">
+                        <video id="cinematicPlayer" class="video-promo__player" controls preload="metadata" playsinline>
+                            <source id="shortMovieSource" src="video/Cinematic/tasya.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+
+                    <div class="video-promo__thumbnail-nav">
+
+
+                        <button class="video-promo__thumbnail" data-video-src="video/cinematic/tasya.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Tasya"> <span>Tasya</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/cinematic/tika.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail Tika"> <span>tika</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/cinematic/frieren.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail frieren"> <span>frieren</span>
+                        </button>
+
+                        <button class="video-promo__thumbnail" data-video-src="video/cinematicsyifa.mp4">
+                            <img src="IMG/Foto Profil.jpg" alt="Thumbnail syifa"> <span>syifa</span>
+                        </button>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+                <div id="MusicContent" class="category-content">
+                    <section class="slideshow-section slideshow-section--music" aria-labelledby="MusicContent">
+                        <div class="music-content">
+                            <div class="side-bar">
+                                <nav aria-label="Playlist Subcategories">
+                                    <button class="playlist-menu-title active" data-submenu-target="Playlist1">Latest Upload</button>
+                                    <button class="playlist-menu-title" data-submenu-target="Playlist2">Korea</button>
+                                    <button class="playlist-menu-title" data-submenu-target="Playlist3">Indonesia</button>
+                                </nav>
+                            </div>
+                
+                            <div id="Playlist1" class="progress-container">
+                                <div class="img-table">
+                                    <img class="class-music-img" src="Music/Lates/img/h2h.png" alt="Latest Music">
+                                </div>
+                                <div class="progress-and-time">
+                                    <audio id="audioPlayer1" src="Music/Lates/audio/Hearts2Hearts - The Chase ( Prod by Eoupxy).wav"></audio>
+                                    <div class="class-music-button-play">
+                                        <button class="playBtn" data-audio="audioPlayer1">Play</button>
+                                        <button class="pauseBtn" data-audio="audioPlayer1" style="display: none;">Pause</button>
+                                    </div>
+                                    <div class="progress-container">
+                                        <span id="currentTime1" class="timer-audio-start">0:00</span>
+                                        <div class="progressBar" data-audio="audioPlayer1">
+                                            <div class="progress"></div>
+                                        </div>
+                                        <span id="duration1" class="timer-audio-duration">0:00</span>
+                                    </div>
+                                    <div class="volume-control">
+                                        <input type="range" class="volumeControl" data-audio="audioPlayer1" min="0" max="1" step="0.1" value="1">
+                                    </div>
+                                </div>
+                                <div class="bottom-bar">
+                                    <div class="music-for-thumbnail">
+                                        <button class="music-thumbnail" data-music-src="Music/Lates/audio/Hearts2Hearts - The Chase ( Prod by Eoupxy).wav">
+                                            <img src="Music/Lates/img/h2h.png" alt="Hearts2Hearts">
+                                            <span>Hearts2Hearts</span>
+                                        </button>
+                                        <!-- Tambahkan thumbnail lainnya di sini -->
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div id="Playlist2" class="playlist">
+                                <!-- Konten playlist Korea -->
+                                <div class="img-table">
+                                    <img class="class-music-img" src="path/to/korea-thumbnail.jpg" alt="Korea Music">
+                                </div>
+                                <!-- Struktur yang sama seperti Playlist1 -->
+                            </div>
+                
+                            <div id="Playlist3" class="playlist">
+                                <!-- Konten playlist Indonesia -->
+                                <div class="img-table">
+                                    <img class="class-music-img" src="path/to/indonesia-thumbnail.jpg" alt="Indonesia Music">
+                                </div>
+                                <!-- Struktur yang sama seperti Playlist1 -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

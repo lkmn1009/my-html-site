@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="CleanPose - Photography & Video Portfolio">
+    <meta name="theme-color" content="#6c6cff">
+    <title>Lukman Wagiman</title>
+    <link rel="icon" href="Img/Foto Profil.png" class="gambar-responsif">
+    <link rel="stylesheet" href="CSS.css">
+    <link rel="preload" href="CSS.css" as="style">
+</head>
+
+<body>
+    <header class="header" role="banner">
+        <div class="introduce-container">
+            <img src="Img/Foto Profil.jpg" alt="Foto Profil" class="header__logo" loading="lazy">
+            <div class="introduce-text">
+                <h1 class="header__title">Lukman Wagiman</h1>
+                <p class="header__intro">Fotografer, videografer and remixer Based on Bekasi </p>
+                <p class="header__intro">aktif berkarya lewat visual dan musik🎥📷🎹🎵 </p>
+                <p class="header__intro">
+                    Contact:
+                    <a href="mailto:Wlukman1009@gmail.com" class="header__intro__a">
+                        <img src="IMG-Icon/gmail.png" class="header__intro__icon" alt="Gmail Icon">
+                        &nbsp;&nbsp;Wlukman1009@gmail.com
+                    </a>
+                    &nbsp;&nbsp;|&nbsp;
+                    <a href="https://www.instagram.com/lukmanwagiman" class="header__intro__a" target="_blank"
+                        rel="noopener">
+                        <img src="IMG-Icon/ig.png" class="header__intro__icon" alt="Instagram Icon">
+                        &nbsp;&nbsp; LukmanWagiman
+                    </a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" role="main">
+        <div class="main_menu">
+            <nav class="category-nav" aria-label="Main Categories">
+                <button class="category-nav__button" data-dropdown-target="photographyContent" aria-expanded="false">
+                    <span class="text_photography">Photography</span>
+                </button>
+                <button class="category-nav__button" data-dropdown-target="videoContent" aria-expanded="false">
+                    <span class="text_photography">Video</span>
+                </button>
+                <button class="category-nav__button" data-dropdown-target="MusicContent" aria-expanded="false">
+                    <span class="text_photography">Music/Remix</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Photography Section -->
+
+        <div id="photographyContent" class="category-content hidden" aria-hidden="true">
+            <section class="photo-section">
+                <nav class="subcategory-nav" aria-label="Photography Subcategories">
+                    <button class="subcategory-nav__button" data-submenu-target="photoOutdoor"
+                        aria-current="false">Outdoor</button>
+                    <button class="subcategory-nav__button" data-submenu-target="photoLamaran"
+                        aria-current="false">Lamaran</button>
+                    <button class="subcategory-nav__button" data-submenu-target="photoIndoor"
+                        aria-current="false">Indoor</button>
+                    <button class="subcategory-nav__button" data-submenu-target="photoEvent"
+                        aria-current="false">Event</button>
+                </nav>
+
+                <!-- Outdoor Photos -->
+                <section id="photoOutdoor" class="slideshow-section" aria-labelledby="photoOutdoorHeading" hidden>
+                    <div class="slideshow slideshow--photo">
+                        <div class="slideshow__container" data-category="photoOutdoor">
+                            <div class="slideshow__item"><img src="Img/outdoor/1.jpg"
+                                    alt="Outdoor Photography Example 1"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/2.jpg"
+                                    alt="Outdoor Photography Example 2"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/3.jpg"
+                                    alt="Outdoor Photography Example 3"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/4.jpg"
+                                    alt="Outdoor Photography Example 4"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/5.jpg"
+                                    alt="Outdoor Photography Example 5"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/6.jpg"
+                                    alt="Outdoor Photography Example 6"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/7.jpg"
+                                    alt="Outdoor Photography Example 7"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/8.jpg"
+                                    alt="Outdoor Photography Example 8"></div>
+                            <div class="slideshow__item"><img src="Img/outdoor/9.jpg"
+                                    alt="Outdoor Photography Example 9"></div>
+                        </div>
+                        <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                            aria-label="Previous Slide">‹</button>
+                        <button class="slideshow__control slideshow__control--next" data-direction="1"
+                            aria-label="Next Slide">›</button>
+                        <div class="slideshow__pagination" role="tablist"></div>
+                    </div>
+                </section>
+
+                <!-- Lamaran Photos -->
+                <section id="photoLamaran" class="slideshow-section" aria-labelledby="photoLamaranHeading" hidden>
+                    <div class="slideshow slideshow--photo">
+                        <div class="slideshow__container" data-category="photoLamaran">
+                            <div class="slideshow__item"><img src="Img/Lamaran/1.jpg"
+                                    alt="Lamaran Photography Example 1"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/2.jpg"
+                                    alt="Lamaran Photography Example 2"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/3.jpg"
+                                    alt="Lamaran Photography Example 3"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/4.jpg"
+                                    alt="Lamaran Photography Example 4"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/5.jpg"
+                                    alt="Lamaran Photography Example 5"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/6.jpg"
+                                    alt="Lamaran Photography Example 6"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/7.jpg"
+                                    alt="Lamaran Photography Example 7"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/8.jpg"
+                                    alt="Lamaran Photography Example 8"></div>
+                            <div class="slideshow__item"><img src="Img/Lamaran/9.jpg"
+                                    alt="Lamaran Photography Example 9"></div>
+                        </div>
+                        <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                            aria-label="Previous Slide">‹</button>
+                        <button class="slideshow__control slideshow__control--next" data-direction="1"
+                            aria-label="Next Slide">›</button>
+                        <div class="slideshow__pagination" role="tablist"></div>
+                    </div>
+                </section>
+
+                <!-- Indoor Photos -->
+                <section id="photoIndoor" class="slideshow-section" aria-labelledby="photoIndoorHeading" hidden>
+                    <div class="slideshow slideshow--photo">
+                        <div class="slideshow__container" data-category="photoIndoor">
+                            <div class="slideshow__item"><img src="img/indoor/1.jpg" alt="Indoor Photography Example 1">
+                            </div>
+                            <div class="slideshow__item"><img src="img/indoor/2.jpg" alt="Indoor Photography Example 2">
+                            </div>
+                            <div class="slideshow__item"><img src="img/indoor/3.jpg" alt="Indoor Photography Example 3">
+                            </div>
+                            <div class="slideshow__item"><img src="img/indoor/4.jpg" alt="Indoor Photography Example 4">
+                            </div>
+                            <div class="slideshow__item"><img src="img/indoor/5.jpg" alt="Indoor Photography Example 5">
+                            </div>
+                        </div>
+                        <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                            aria-label="Previous Slide">‹</button>
+                        <button class="slideshow__control slideshow__control--next" data-direction="1"
+                            aria-label="Next Slide">›</button>
+                        <div class="slideshow__pagination" role="tablist"></div>
+                    </div>
+                </section>
+
+                <!-- Event Photos -->
+                <section id="photoEvent" class="slideshow-section" aria-labelledby="photoEventHeading" hidden>
+                    <div class="slideshow slideshow--photo">
+                        <div class="slideshow__container" data-category="photoEvent">
+                            <div class="slideshow__item"><img src="img/Event/1.jpg" alt="Event Photography Example 1">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/2.jpg" alt="Event Photography Example 2">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/3.jpg" alt="Event Photography Example 3">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/4.jpg" alt="Event Photography Example 4">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/5.jpg" alt="Event Photography Example 5">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/6.jpg" alt="Event Photography Example 6">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/7.jpeg" alt="Event Photography Example 7">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/8.jpeg" alt="Event Photography Example 8">
+                            </div>
+                            <div class="slideshow__item"><img src="img/Event/9.jpeg" alt="Event Photography Example 9">
+                            </div>
+                        </div>
+                        <button class="slideshow__control slideshow__control--prev" data-direction="-1"
+                            aria-label="Previous Slide">‹</button>
+                        <button class="slideshow__control slideshow__control--next" data-direction="1"
+                            aria-label="Next Slide">›</button>
+                        <div class="slideshow__pagination" role="tablist"></div>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+
+        <!-- Video Section -->
+
+        <div id="videoContent" class="category-content hidden" aria-hidden="true">
+            <section class="video-section">
+                <nav class="subcategory-nav" aria-label="Video Subcategories">
+                    <button class="subcategory-nav__button" data-submenu-target="videoPROMOSI"
+                        aria-current="false">Promosi</button>
+                    <button class="subcategory-nav__button" data-submenu-target="videoSHORT_MOVIE"
+                        aria-current="false">Short Movie</button>
+                    <button class="subcategory-nav__button" data-submenu-target="videoCinematic"
+                        aria-current="false">Other</button>
+                </nav>
+
+                <!-- Promosi Videos -->
+                <section id="videoPROMOSI" class="slideshow-section slideshow-section--video-promo"
+                    aria-labelledby="videoPROMOSIHeading" hidden>
+                    <div class="video-promo">
+                        <div class="video-promo__player-wrapper">
+                            <video id="promoVideoPlayer" class="video-promo__player" controls preload="metadata"
+                                playsinline aria-label="Video Player">
+                                <source id="promoVideoSource" src="video/Promosi/Kacamata/Vid-Kacamata.mp4"
+                                    type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                        <div class="video-promo__thumbnail-nav" role="tablist">
+                            <button class="video-promo__thumbnail"
+                                data-video-src="video/Promosi/Kacamata/Vid-Kacamata.mp4" role="tab"
+                                aria-selected="true">
+                                <img src="Video/Promosi/Kacamata/Image-Kacamata.jpg" alt="Thumbnail Kacamata"
+                                    width="160" height="90" loading="lazy">
+                                <span>Kacamata</span>
+                            </button>
+                            <button class="video-promo__thumbnail" data-youtube-id="T5XO9dI4NPk" role="tab"
+                                aria-selected="false">
+                                <img src="Video/Promosi/BPLJSKB/Image-BPLJSKB.jpg" alt="Thumbnail BPLJSKB" width="160"
+                                    height="90" loading="lazy">
+                                <span>Company Profile (BPLJSKB)</span>
+                            </button>
+                            <button class="video-promo__thumbnail" data-video-src="Video/Promosi/Hoodie/Vid-Hoodie.mp4"
+                                role="tab" aria-selected="false">
+                                <img src="Video/Promosi/Hoodie/Image-Hoodie.jpg" alt="Thumbnail Hoodie" width="160"
+                                    height="90" loading="lazy">
+                                <span>Hoodie</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Short Movie Videos -->
+                <section id="videoSHORT_MOVIE" class="slideshow-section slideshow-section--video-promo"
+                    aria-labelledby="videoSHORT_MOVIEHeading" hidden>
+                    <div class="video-promo">
+                        <div class="video-promo__player-wrapper">
+                            <video id="shortMoviePlayer" class="video-promo__player" controls preload="metadata"
+                                playsinline aria-label="Video Player">
+                                <source id="shortMovieSource" src="video/Short_Movie/Home.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                        <div class="video-promo__thumbnail-nav" role="tablist">
+                            <button class="video-promo__thumbnail" data-video-src="video/Short_Movie/Home/Vid-Home.mp4"
+                                role="tab" aria-selected="false">
+                                <img src="Video/Short_Movie/Home/Image-Home.jpg" alt="Thumbnail Home" width="160"
+                                    height="90" loading="lazy">
+                                <span>Home</span>
+                            </button>
+                            <button class="video-promo__thumbnail"
+                                data-video-src="video/Short_Movie/Morning/Vid-Morning.mp4" role="tab"
+                                aria-selected="false">
+                                <img src="Video/Short_Movie/Morning/Image-Morning.png.jpg"
+                                    alt="Thumbnail Morning Person" width="160" height="90" loading="lazy">
+                                <span>Morning Person</span>
+                            </button>
+                            <button class="video-promo__thumbnail"
+                                data-video-src="video/Short_Movie/Stop it/Vid-Stop it 2.mp4" role="tab"
+                                aria-selected="false">
+                                <img src="Video/Short_Movie/Stop It/Image-Stop It.jpg" alt="Thumbnail Stop It"
+                                    width="160" height="90" loading="lazy">
+                                <span>Stop It</span>
+                            </button>
+                            <button class="video-promo__thumbnail" data-youtube-id="Zo5GbEDh5NE" role="tab"
+                                aria-selected="false">
+                                <img src="Video/Short_Movie/The Noir/Image-The Noir.jpg" alt="Thumbnail The Noir"
+                                    width="160" height="90" loading="lazy">
+                                <span>The Noir</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cinematic Videos -->
+                <section id="videoCinematic" class="slideshow-section slideshow-section--video-promo"
+                    aria-labelledby="videoCinematicHeading" hidden>
+                    <div class="video-promo">
+                        <div class="video-promo__player-wrapper">
+                            <video id="cinematicPlayer" class="video-promo__player" controls preload="metadata"
+                                playsinline aria-label="Video Player">
+                                <source id="cinematicSource" src="video/Cinematic/Tasya/Vid-Tasya.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                        <div class="video-promo__thumbnail-nav" role="tablist">
+                            <button class="video-promo__thumbnail" data-video-src="video/Cinematic/Tasya/Vid-Tasya.mp4"
+                                role="tab" aria-selected="false">
+                                <img src="video/Cinematic/Tasya/Image-Tasya.jpg" alt="Thumbnail Tasya" width="160"
+                                    height="90" loading="lazy">
+                                <span>Tasya</span>
+                            </button>
+                            <button class="video-promo__thumbnail" data-video-src="video/Cinematic/Tika/Vid-Tika.mp4"
+                                role="tab" aria-selected="false">
+                                <img src="video/Cinematic/Tika/Image-Tika.jpg" alt="Thumbnail Tika" width="160"
+                                    height="90" loading="lazy">
+                                <span>Tika</span>
+                            </button>
+                            <button class="video-promo__thumbnail"
+                                data-video-src="video/Cinematic/frieren/vid-frieren.mp4" role="tab"
+                                aria-selected="false">
+                                <img src="video/Cinematic/frieren/Image-Frieren.jpg" alt="Thumbnail Frieren" width="160"
+                                    height="90" loading="lazy">
+                                <span>Frieren</span>
+                            </button>
+                            <button class="video-promo__thumbnail" data-video-src="video/Cinematic/syifa/vid-syifa.mp4"
+                                role="tab" aria-selected="false">
+                                <img src="video/Cinematic/Syifa/Image-Syifa.jpg" alt="Thumbnail Syifa" width="160"
+                                    height="90" loading="lazy">
+                                <span>Syifa</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+
+        <!-- Music Section -->
+        <div id="MusicContent" class="category-content hidden" aria-hidden="true">
+            <section class="music-section" aria-label="Music and Remix Content">
+                <audio id="globalAudioPlayer" aria-label="Audio Player" style="display: none;"></audio>
+
+                <nav class="music-nav" aria-label="Music Categories">
+                    <button class="subcategory-nav__button active" data-music-target="latestUpload"
+                        aria-current="page">Latest
+                        Upload</button>
+                    <button class="subcategory-nav__button" data-music-target="koreanMusic">Korean</button>
+                    <button class="subcategory-nav__button" data-music-target="indonesianMusic">Indonesian</button>
+                </nav>
+
+                <div class="music-player-container">
+                    <!-- Latest Upload Playlist -->
+                    <div id="latestUpload" class="music-playlist" aria-hidden="false">
+                        <div class="music-player">
+                            <div class="music-cover">
+                                <img src="Music/H2H/The Chase/Image-The Chase.png" alt="Latest Upload Cover"
+                                    class="music-cover__img" width="200" height="200" loading="lazy">
+                            </div>
+                            <div class="music-info">
+                                <h3 class="music-title">Hearts2Hearts - The Chase</h3>
+                                <p class="music-artist">Prod / Remix By Eoupxy</p>
+                            </div>
+                            <div class="music-controls">
+                                <div class="controls-main">
+                                    <button class="control-button play-button" aria-label="Play">
+                                        <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="control-button pause-button" aria-label="Pause" hidden>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress-container">
+                                    <span class="time-current" aria-live="polite">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" max="100"
+                                        aria-label="Progress Bar">
+                                    <span class="time-duration">0:00</span>
+                                </div>
+                                <div class="volume-control">
+                                    <button class="control-button volume-button" aria-label="Mute">
+                                        <svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.7"
+                                        aria-label="Volume Control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="music-thumbnails-container">
+                            <button class="music-slide-control music-slide-control--prev" aria-label="Previous Track">
+                            < </button>
+                                    <button class="music-slide-control music-slide-control--next"
+                                        aria-label="Next Track">></button>
+                                    <div class="music-thumbnails" role="tablist">
+                                        <button class="music-thumbnail active"
+                                            data-music-src="Music/H2H/The Chase/Audio-The Chase.mp3"
+                                            data-cover="Music/H2H/The Chase/Image-The Chase.png"
+                                            data-title="Hearts2Hearts - The Chase" data-artist="Prod / Remix By Eoupxy"
+                                            role="tab" aria-selected="true">
+                                            <img src="Music/H2H/The Chase/Image-The Chase.png" alt="Hearts2Hearts"
+                                                width="150" height="150" loading="lazy">
+                                            <span class="thumbnail-title">The Chase</span>
+                                        </button>
+                                        <button class="music-thumbnail"
+                                            data-music-src="Music/Njz/bubble gum/audio-bubble gum.mp3"
+                                            data-cover="Music/Njz/Bubble Gum/Image-Bubble Gum.jpg"
+                                            data-title="Njz/New Jeans - Bubble Gum (Eoupxy Edit)"
+                                            data-artist="Eoupxy Remix" role="tab" aria-selected="false">
+                                            <img src="Music/Njz/Bubble Gum/Image-Bubble Gum.jpg" alt="New Jeans Cover"
+                                                width="150" height="150" loading="lazy">
+                                            <span class="thumbnail-title">Bubble Gum Remix</span>
+                                        </button>
+                                        <button class="music-thumbnail"
+                                            data-music-src="Music/Anggito/Tak Segampang Itu/Audio-Tak segampang itu.mp3"
+                                            data-cover="Music/Anggito/Tak Segampang Itu/Image-Tak segampang.png"
+                                            data-title="Anggi Marito - Tak Segampang itu (Remix)"
+                                            data-artist="Eoupxy Remix" role="tab" aria-selected="false">
+                                            <img src="Music/Anggito/Tak Segampang Itu/Image-Tak segampang.png"
+                                                alt="Anggito" width="150" height="150" loading="lazy">
+                                            <span class="thumbnail-title">Tak Segampang itu Remix</span>
+                                        </button>
+                                        <a href="https://www.youtube.com/Eoupxy" target="_blank" rel="noopener noreferrer">
+                                            <button class="music-thumbnail">
+                                                <img src="IMG-Icon/Yotube More Music.jpg" alt="More Music on YouTube"
+                                                    width="150" height="150" loading="lazy">
+                                            </button>
+                                        </a>
+                                    </div>
+                        </div>
+                    </div>
+
+                    <!-- Korean Music Playlist -->
+                    <div id="koreanMusic" class="music-playlist" aria-hidden="true">
+                        <div class="music-player">
+                            <div class="music-cover">
+                                <img src="Music/Aespa/Whiplash/Image-Whiplash.png" alt="Korean Music Cover"
+                                    class="music-cover__img" width="200" height="200" loading="lazy">
+                            </div>
+                            <div class="music-info">
+                                <h3 class="music-title">Aespa - Whiplash (Remix)</h3>
+                                <p class="music-artist">Eoupxy Remix</p>
+                            </div>
+                            <div class="music-controls">
+                                <div class="controls-main">
+                                    <button class="control-button play-button" aria-label="Play">
+                                        <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="control-button pause-button" aria-label="Pause" hidden>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress-container">
+                                    <span class="time-current" aria-live="polite">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" max="100"
+                                        aria-label="Progress Bar">
+                                    <span class="time-duration">0:00</span>
+                                </div>
+                                <div class="volume-control">
+                                    <button class="control-button volume-button" aria-label="Mute">
+                                        <svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.7"
+                                        aria-label="Volume Control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="music-thumbnails-container">
+                            <button class="music-slide-control music-slide-control--prev"
+                                aria-label="Previous Track">‹</button>
+                            <button class="music-slide-control music-slide-control--next"
+                                aria-label="Next Track">›</button>
+                            <div class="music-thumbnails" role="tablist">
+                                <button class="music-thumbnail" data-music-src="Music/Aespa/Whiplash/Audio-Whiplash.mp3"
+                                    data-cover="Music/Aespa/Whiplash/Image-Whiplash.png"
+                                    data-title="Aespa - Whiplash Remix" data-artist="Eoupxy Remix" role="tab"
+                                    aria-selected="false">
+                                    <img src="Music/Aespa/Whiplash/Image-Whiplash.png" alt="Aespa-Whiplash" width="150"
+                                        height="150" loading="lazy">
+                                    <span class="thumbnail-title">Whiplash</span>
+                                </button>
+                                <button class="music-thumbnail" data-music-src="Music/Jennie/Solo/Audio-Solo.mp3"
+                                    data-cover="Music/Jennie/Solo/Image-Solo.jpg" data-title="Jennie - Solo (lofi)"
+                                    data-artist="Prod / Remix By Eoupxy" role="tab" aria-selected="false">
+                                    <img src="Music/Jennie/Solo/Image-Solo.jpg" alt="Jennie - Solo (Lofi)" width="150"
+                                        height="150" loading="lazy">
+                                    <span class="thumbnail-title">Solo</span>
+                                </button>
+                                <button class="music-thumbnail" data-music-src="Music/Illit/Magnetic/Audio-Magnetic.mp3"
+                                    data-cover="Music/Illit/Magnetic/Image-Magnetic.png"
+                                    data-title="Illit - Magnetic Remix" data-artist="Prod / Remix By Eoupxy" role="tab"
+                                    aria-selected="false">
+                                    <img src="Music/Illit/Magnetic/Image-Magnetic.png" alt="Illit - Magnetic Remix"
+                                        width="150" height="150" loading="lazy">
+                                    <span class="thumbnail-title">Magnetic</span>
+                                </button>
+                                <button class="music-thumbnail"
+                                    data-music-src="Music/StayC/Streotype/Audio-Streotype.mp3"
+                                    data-cover="Music/StayC/Streotype/Image-Streotype.png"
+                                    data-title="StayC - Streotype Remix" data-artist="Prod / Remix By Eoupxy" role="tab"
+                                    aria-selected="false">
+                                    <img src="Music/StayC/Streotype/Image-Streotype.png" alt="StayC - Streotype Remix"
+                                        width="150" height="150" loading="lazy">
+                                    <span class="thumbnail-title">Streotype</span>
+                                </button>
+                                <button class="music-thumbnail" data-music-src="Music/Gfriend/Mago/Audio-Mago.mp3"
+                                    data-cover="Music/Gfriend/Mago/Image-Mago.png" data-title="Gfriend - Mago Remix"
+                                    data-artist="Prod / Remix By Eoupxy" role="tab" aria-selected="false">
+                                    <img src="Music/Gfriend/Mago/Image-Mago.png" alt="Gfriend - Mago Remix" width="150"
+                                        height="150" loading="lazy">
+                                    <span class="thumbnail-title">Mago</span>
+                                </button>
+                                <a href="https://www.youtube.com/Eoupxy" target="_blank" rel="noopener noreferrer">
+                                    <button class="music-thumbnail">
+                                        <img src="IMG-Icon/Yotube More Music.jpg" alt="More Music on YouTube"
+                                            width="150" height="150" loading="lazy">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Indonesian Music Playlist -->
+                    <div id="indonesianMusic" class="music-playlist" aria-hidden="true">
+                        <div class="music-player">
+                            <div class="music-cover">
+                                <img src="Music/Bernadya/Lama Lama/Image-Lama Lama.jpg" alt="Indo cover"
+                                    class="music-cover__img" width="200" height="200" loading="lazy">
+                            </div>
+                            <div class="music-info">
+                                <h3 class="music-title">Bernadya - Lama Lama</h3>
+                                <p class="music-artist">Eoupxy Remix</p>
+                            </div>
+                            <div class="music-controls">
+                                <div class="controls-main">
+                                    <button class="control-button play-button" aria-label="Play">
+                                        <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="control-button pause-button" aria-label="Pause" hidden>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress-container">
+                                    <span class="time-current" aria-live="polite">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" max="100"
+                                        aria-label="Progress Bar">
+                                    <span class="time-duration">0:00</span>
+                                </div>
+                                <div class="volume-control">
+                                    <button class="control-button volume-button" aria-label="Mute">
+                                        <svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.7"
+                                        aria-label="Volume Control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="music-thumbnails-container">
+                            <button class="music-slide-control music-slide-control--prev"
+                                aria-label="Previous Track">‹</button>
+                            <button class="music-slide-control music-slide-control--next"
+                                aria-label="Next Track">›</button>
+                            <div class="music-thumbnails" role="tablist">
+                                <button class="music-thumbnail"
+                                    data-music-src="Music/Bernadya/Lama Lama/Audio-Lama Lama.mp3"
+                                    data-cover="Music/Bernadya/Lama Lama/Image-Lama Lama.jpg"
+                                    data-title="Bernadya - Lama Lama Remix" data-artist="Eoupxy Remix" role="tab"
+                                    aria-selected="false">
+                                    <img src="Music/Bernadya/Lama Lama/Image-Lama Lama.jpg"
+                                        alt="Bernadya - Lama Lama Remix" width="150" height="150" loading="lazy">
+                                    <span class="thumbnail-title">Lama - Lama</span>
+                                </button>
+                                <button class="music-thumbnail"
+                                    data-music-src="Music/Anggito/Tak Segampang Itu/Audio-Tak segampang itu.mp3"
+                                    data-cover="Music/Anggito/Tak Segampang Itu/Image-Tak segampang.png"
+                                    data-title="Anggi Marito - Tak Segampang itu (Remix)" data-artist="Eoupxy Remix"
+                                    role="tab" aria-selected="false">
+                                    <img src="Music/Anggito/Tak Segampang Itu/Image-Tak segampang.png" alt="Anggito"
+                                        width="150" height="150" loading="lazy">
+                                    <span class="thumbnail-title">Tak Segampang itu Remix</span>
+                                </button>
+                                <a href="https://www.youtube.com/Eoupxy" target="_blank" rel="noopener noreferrer">
+                                    <button class="music-thumbnail">
+                                        <img src="IMG-Icon/Yotube More Music.jpg" alt="More Music on YouTube"
+                                            width="150" height="150" loading="lazy">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer-section">Social Media and Contact :
+
+
+        <a href="https://www.instagram.com/lukmanwagiman" class="header__intro__a" target="_blank" rel="noopener">
+            <img src="IMG-Icon/ig.png" class="footer__intro__icon_IG" alt="Instagram Icon">
+        </a>
+
+        <a href="https://www.youtube.com/Eoupxy" class="header__intro__a" target="_blank" rel="noopener">
+            <img src="IMG-Icon/yt.png" class="footer__intro__icon_YT" alt="Instagram Icon">
+        </a>
+
+        <a href="mailto:Wlukman1009@gmail.com" class="header__intro__a">
+            <img src="IMG-Icon/gmail.png" class="footer__intro__icon_GMAIL" alt="Gmail Icon">
+        </a>
+
+    </footer>
+    <footer class="footer-section2">Copyright © 2025 Lukman Wagiman</footer>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
