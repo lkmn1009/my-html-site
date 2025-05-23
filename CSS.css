@@ -1194,8 +1194,25 @@ a:hover {
 
  .music-section{
       height: auto;
-      
+
     }
 
 
 }
+
+@media (max-width: 360px){
+
+ .music-section{
+      height: auto;
+
+    }
+
+
+
+
+
+
+
+
+
+} 
