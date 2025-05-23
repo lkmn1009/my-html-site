@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lukmanwagiman.netlify.app/sitemap.xml
+Sitemap: https://lukmanwagiman.netlify.app/sitemap.xml 
