@@ -1092,7 +1092,10 @@ a:hover {
       background:red;
       height: 400px;
     }
-
+.music-section{
+  height: 400px;
+   
+}
 
 }
 
@@ -1189,6 +1192,7 @@ a:hover {
 }
 .music-section{
   height: 400px;
+   
 }
 
 }
