@@ -1098,6 +1098,9 @@ a:hover {
    
 }
 
+
+
+
 }
 
 @media (max-width: 480px) {
@@ -1192,8 +1195,12 @@ a:hover {
   height: 100%;
 }
 .music-section{
+<<<<<<< HEAD
+  height: 450px;
+=======
   height: 400px;
    
+>>>>>>> c0665094fa8ea1b9ce4e3eab85a6e6f09aa9235c
 }
 
 }
