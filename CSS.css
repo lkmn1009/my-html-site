@@ -170,6 +170,16 @@ a:hover {
   position: relative;
 }
 
+
+
+  .contact {
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+
+  }
+
 @media (min-width: 768px) {
   .introduce-container {
     flex-direction: row;
@@ -290,21 +300,22 @@ a:hover {
   color: var(--text-color-mid);
   font-size: var(--font-size-sm);
 }
-.footerformulir{
-color: rgb(255, 255, 255);
-background-color: var(--primary-color);
-border-radius: 12px;
-width: 200px;
-justify-content: center;
-align-items: center;
-padding: var(--spacing-sm);
-display: flex;
+
+.footerformulir {
+  color: rgb(255, 255, 255);
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm);
+  display: flex;
 
 }
 
 .footerformulir:hover {
-color: white;
-background-color:  rgb(108, 201, 255);
+  color: white;
+  background-color: rgb(108, 201, 255);
 }
 
 
@@ -363,6 +374,43 @@ background-color:  rgb(108, 201, 255);
   width: 35px;
   height: 35px;
 }
+
+
+  .footer_socialmedia {
+    display: inline-flex;
+    flex-direction: span;
+    position: relative;
+    gap: 20px;     
+  }
+
+ .footer__intro__icon_IG{
+
+    width: 23px;
+    height: 23px;
+  }
+
+  .footer__intro__icon_YT{
+ 
+    width: 26px;
+    height: 26px;
+  }
+  .footer__intro__icon_GMAIL{
+  ;
+    width: 26px;
+    height: 26px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* =============================================
    NAVIGATION STYLES
@@ -1049,6 +1097,14 @@ background-color:  rgb(108, 201, 255);
     font-size: 15px;
   }
 
+  .contact {
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .header__title {
     font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
@@ -1143,20 +1199,46 @@ background-color:  rgb(108, 201, 255);
   }
 
   .footer__intro__icon {
-    width: 32px;
-    height: 32px;
+    display: flex;
+    width: 26px;
+    height: 26px;
   }
 
 
 
-    .slideshow {
-      background:red;
-      height: 400px;
-    }
-  
-    .music-section{
-      height: auto;
-    }
+  .slideshow {
+    background: red;
+    height: 400px;
+  }
+
+  .music-section {
+    height: auto;
+  }
+
+  .footer_socialmedia {
+    display: inline-flex;
+    flex-direction: span;
+    position: relative;
+    gap: 20px;
+  }
+
+  .footer__intro__icon_IG {
+
+    width: 23px;
+    height: 23px;
+  }
+
+  .footer__intro__icon_YT {
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer__intro__icon_GMAIL {
+    ;
+    width: 26px;
+    height: 26px;
+  }
 
 
 }
@@ -1166,6 +1248,47 @@ background-color:  rgb(108, 201, 255);
     font-size: 14px;
   }
 
+
+  .contact {
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .footer_socialmedia {
+    display: inline-flex;
+    flex-direction: span;
+    position: relative;
+    gap: 20px;
+  }
+
+  .footer__intro__icon_IG {
+
+    width: 23px;
+    height: 23px;
+  }
+
+  .footer__intro__icon_YT {
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer__intro__icon_GMAIL {
+    ;
+    width: 26px;
+    height: 26px;
+  }
+
+
+
+  .footer__intro__a {
+    display: block;
+  }
+
+
   .header__title {
     font-size: clamp(1.1rem, 5vw, 1.3rem);
   }
@@ -1174,6 +1297,7 @@ background-color:  rgb(108, 201, 255);
     font-size: var(--font-size-xs);
     flex-direction: column;
     align-items: flex-start;
+    margin: auto;
     /* Changed from center for better readability on small screens */
   }
 
@@ -1231,49 +1355,57 @@ background-color:  rgb(108, 201, 255);
     /* was var(--font-size-xxs) - xxs is not standard, use xs */
   }
 
-.photo-section {
-  height: 480px; /* Tinggi area tempat foto */
-  position: relative;
 
-  align-items: center; /* Menyelaraskan item secara vertikal */
-  justify-content: center; /* Menyelaraskan item secara horizontal */
+
+
+  . .photo-section {
+    height: 480px;
+    /* Tinggi area tempat foto */
+    position: relative;
+
+    align-items: center;
+    /* Menyelaraskan item secara vertikal */
+    justify-content: center;
+    /* Menyelaraskan item secara horizontal */
+  }
+
+  .slideshow__item {
+    overflow: hidden;
+    object-fit: cover;
+    overflow: hidden;
+    /* Memastikan gambar tidak melebihi batas */
+    height: 420px;
+  }
+
+  /* Gaya tambahan untuk gambar */
+  .slideshow__item img {
+    display: block;
+    /* Menghilangkan margin bawah default pada <img> */
+    width: 100%;
+    height: 100%;
+  }
+
+  .music-section {
+    height: auto;
+
+  }
+
+
 }
 
-.slideshow__item {
-  overflow: hidden;
-  object-fit: cover;
-  overflow: hidden; /* Memastikan gambar tidak melebihi batas */
-  height: 420px;
-}
+@media (max-width: 360px) {
 
-/* Gaya tambahan untuk gambar */
-.slideshow__item img {
-  display: block; /* Menghilangkan margin bawah default pada <img> */
-  width: 100%;
-  height: 100%;
-}
+  .music-section {
+    height: auto;
 
- .music-section{
-      height: auto;
+  }
 
-    }
+
+
+
+
+
+
 
 
 }
-
-@media (max-width: 360px){
-
- .music-section{
-      height: auto;
-
-    }
-
-
-
-
-
-
-
-
-
-} 
