@@ -275,6 +275,67 @@ a:hover {
   padding: var(--spacing-sm);
 }
 
+.footer-section3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 0;
+  background-color: var(--background-content-light);
+  box-shadow: var(--shadow-light);
+  width: 95%;
+  max-width: 900px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  color: var(--text-color-mid);
+  font-size: var(--font-size-sm);
+}
+.footerformulir{
+color: rgb(255, 255, 255);
+background-color: var(--primary-color);
+border-radius: 12px;
+width: 200px;
+justify-content: center;
+align-items: center;
+padding: var(--spacing-sm);
+display: flex;
+
+}
+
+.footerformulir:hover {
+color: white;
+background-color:  rgb(108, 201, 255);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer__intro__icon {
   width: 40px;
   height: 40px;
