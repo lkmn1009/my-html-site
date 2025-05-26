@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (playButton && pauseButton) {
             playButton.hidden = isPlaying;
             pauseButton.hidden = !isPlaying;
-            playButton.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play'); // Corrected aria-label for play
+            playButton.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
             pauseButton.setAttribute('aria-label', 'Pause');
         }
     };
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeCurrentEl = playlistElement.querySelector('.time-current');
         const timeDurationEl = playlistElement.querySelector('.time-duration');
 
-        if (coverImg) coverImg.src = cover || 'Img/Foto Profil.png'; // Default cover
+        if (coverImg) coverImg.src = cover || 'Img/Foto Profil.png';
         if (titleEl) titleEl.textContent = title || 'Unknown Title';
         if (artistEl) artistEl.textContent = artist || 'Unknown Artist';
         if (progressBarEl) progressBarEl.value = isNaN(progress) ? 0 : progress;
@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         state.currentMediaType = mediaType;
         state.currentPlayingThumbnail = thumbnailToActivate;
 
-        // Deactivate thumbnails in all playlists first
         elements.musicPlaylists.forEach(pl => {
             pl.querySelectorAll('.music-thumbnail:not([href])').forEach(t => {
                 t.classList.remove('active');
@@ -132,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Activate the target thumbnail
         thumbnailToActivate.classList.add('active');
         thumbnailToActivate.setAttribute('aria-selected', 'true');
 
@@ -148,11 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-
-    const stopCurrentMusicPlayback = (clearAllDisplays = true) => { // Default to clear displays
+    const stopCurrentMusicPlayback = (clearAllDisplays = true) => {
         if (state.currentAudioPlayer && !state.currentAudioPlayer.paused) {
             state.currentAudioPlayer.pause();
-            if (clearAllDisplays) state.currentAudioPlayer.currentTime = 0; // Only reset time if clearing all
+            if (clearAllDisplays) state.currentAudioPlayer.currentTime = 0;
         }
 
         if (state.youtubePlayer && typeof state.youtubePlayer.stopVideo === 'function' && typeof state.youtubePlayer.getPlayerState === 'function') {
@@ -161,14 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ([YT.PlayerState.PLAYING, YT.PlayerState.BUFFERING, YT.PlayerState.PAUSED].includes(playerState)) {
                     state.youtubePlayer.stopVideo();
                 }
-            } else if (playerState === 1 || playerState === 3 || playerState === 2) {
+            } else if (playerState === 1 || playerState === 3 || playerState === 2) { // Fallback if YT object not fully ready
                 state.youtubePlayer.stopVideo();
             }
         }
 
         stopProgressTimer();
         state.isAudioPlaying = false;
-        togglePlayPauseButtons(false); // Update buttons globally based on new state
+        togglePlayPauseButtons(false);
 
         if (state.currentPlayingThumbnail) {
             state.currentPlayingThumbnail.classList.remove('active');
@@ -206,17 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.video-promo__player-wrapper .youtube-iframe').forEach(iframe => {
             if (iframe.src && (iframe.src.includes('youtube.com/embed') || iframe.src.includes('youtu.be'))) {
-                iframe.src = 'about:blank';
+                iframe.src = 'about:blank'; // Stop YouTube video by clearing src
             }
         });
 
         if (!keepAudioIfInMusicContent || !isInMusicContent) {
-            stopCurrentMusicPlayback(true); // Clear displays if not keeping audio for music content
+            stopCurrentMusicPlayback(true);
         } else if (isInMusicContent && !keepAudioIfInMusicContent) {
-             // If in music content but explicitly told not to keep audio (e.g. switching main category)
             stopCurrentMusicPlayback(true);
         }
-        // If keepAudioIfInMusicContent is true AND isInMusicContent is true, music playback state is preserved.
     };
 
     const hideAllContent = () => {
@@ -246,8 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const isSwitchingToMusicContent = contentId === 'MusicContent';
         const wasInMusicContent = state.activeCategory === 'MusicContent';
 
-        if (state.activeCategory !== contentId) { // Only stop all media if switching main categories
-            stopAllMedia(isSwitchingToMusicContent); // Keep audio if switching TO music content
+        if (state.activeCategory !== contentId) {
+            stopAllMedia(isSwitchingToMusicContent);
         }
 
         hideAllContent();
@@ -256,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!targetContent) {
             console.error(`Target content with ID "${contentId}" not found.`);
             state.activeCategory = null;
-            if (wasInMusicContent && !isSwitchingToMusicContent) togglePlayPauseButtons(false); // Reset music buttons if leaving music
+            if (wasInMusicContent && !isSwitchingToMusicContent) togglePlayPauseButtons(false);
             return;
         }
 
@@ -272,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isSwitchingToMusicContent) {
-            const activePlaylistId = state.activePlaylist; // Use the stored active playlist
+            const activePlaylistId = state.activePlaylist;
             const activePlaylistElement = document.getElementById(activePlaylistId);
 
             elements.musicPlaylists.forEach(pl => {
@@ -281,12 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 pl.classList.toggle('active', isActive);
                 pl.setAttribute('aria-hidden', isActive ? 'false' : 'true');
             });
-            
-            elements.musicNavButtons.forEach(btn => {
-                 btn.classList.toggle('active', btn.dataset.musicTarget === activePlaylistId);
-                 btn.setAttribute('aria-current', btn.dataset.musicTarget === activePlaylistId ? 'page' : 'false');
-            });
 
+            elements.musicNavButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.musicTarget === activePlaylistId);
+                btn.setAttribute('aria-current', btn.dataset.musicTarget === activePlaylistId ? 'page' : 'false');
+            });
 
             if (activePlaylistElement) {
                 if (state.isAudioPlaying && state.currentPlayingThumbnail) {
@@ -307,8 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     songData.progress = songData.duration && songData.duration > 0 ? (songData.currentTime / songData.duration) * 100 : 0;
 
                     updatePlayerDisplayForPlaylist(activePlaylistElement, songData.cover, songData.title, songData.artist, songData.currentTime, songData.duration, songData.progress);
-                    
-                    // Sync active thumbnail within this playlist
+
                     const currentGlobalThumbSrc = state.currentPlayingThumbnail.dataset.musicSrc;
                     const currentGlobalThumbYT = state.currentPlayingThumbnail.dataset.youtubeId ? extractYouTubeId(state.currentPlayingThumbnail.dataset.youtubeId) : null;
 
@@ -316,14 +309,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         const tSrc = t.dataset.musicSrc;
                         const tYT = t.dataset.youtubeId ? extractYouTubeId(t.dataset.youtubeId) : null;
                         const isThisThePlayingThumb = (state.currentMediaType === 'audio' && tSrc === currentGlobalThumbSrc) ||
-                                                     (state.currentMediaType === 'youtube' && tYT && tYT === currentGlobalThumbYT);
+                            (state.currentMediaType === 'youtube' && tYT && tYT === currentGlobalThumbYT);
                         t.classList.toggle('active', isThisThePlayingThumb);
                         t.setAttribute('aria-selected', isThisThePlayingThumb ? 'true' : 'false');
-                        if(isThisThePlayingThumb) {
-                             centerMusicThumbnail(t.closest('.music-thumbnails-container'), t);
+                        if (isThisThePlayingThumb) {
+                            centerMusicThumbnail(t.closest('.music-thumbnails-container'), t);
                         }
                     });
-
 
                     if (state.isAudioPlaying) {
                         const progressBar = activePlaylistElement.querySelector('.progress-bar');
@@ -331,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const playerInstance = state.currentMediaType === 'audio' ? state.currentAudioPlayer : state.youtubePlayer;
                         if (playerInstance) startProgressTimer(playerInstance, progressBar, timeCurrent);
                     }
-                } else { // Not playing or no current thumbnail
+                } else {
                     const firstThumb = activePlaylistElement.querySelector('.music-thumbnail:not([href])');
                     if (firstThumb) {
                         updatePlayerDisplayForPlaylist(activePlaylistElement, firstThumb.dataset.cover, firstThumb.dataset.title, firstThumb.dataset.artist);
@@ -344,11 +336,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-            togglePlayPauseButtons(state.isAudioPlaying); // Update for current global state
-        } else { // Not MusicContent
-            const firstSubButton = targetContent.querySelector('.subcategory-nav button'); // More specific
+            togglePlayPauseButtons(state.isAudioPlaying);
+        } else {
+            const firstSubButton = targetContent.querySelector('.subcategory-nav button');
             if (firstSubButton) firstSubButton.click();
-            if (wasInMusicContent) togglePlayPauseButtons(false); // Reset music buttons if leaving music
+            if (wasInMusicContent) togglePlayPauseButtons(false);
         }
     };
 
@@ -356,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentContent = document.querySelector('.category-content.active');
         if (!parentContent || parentContent.id === "MusicContent") return;
 
-        stopAllMedia(parentContent.id === 'MusicContent'); // Keep audio only if already in music content (which is not this branch)
+        stopAllMedia(false); // Always stop media when changing subcontent within photo/video
 
         parentContent.querySelectorAll('.slideshow-section, .sub_menu > .slideshow-section').forEach(section => {
             section.style.display = 'none';
@@ -501,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapper = section.querySelector('.video-promo__player-wrapper');
         if (!wrapper) return;
 
-        stopAllMedia(state.activeCategory === 'MusicContent'); // Keep music if we are in music section
+        stopAllMedia(false); 
 
         const localVideoPlayer = wrapper.querySelector('video.video-promo__player');
         let existingIframe = wrapper.querySelector('.youtube-iframe');
@@ -564,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
             state.youtubeAPIReady = true;
-            if (window.YT && window.YT.Player && !state.youtubePlayer) createYouTubePlayer(); // Check if API loaded but player not created
+            if (window.YT && window.YT.Player && !state.youtubePlayer) createYouTubePlayer();
             return;
         }
 
@@ -612,8 +604,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const onYouTubePlayerStateChange = (event) => {
         if (state.currentMediaType !== 'youtube' || !state.currentPlayingThumbnail) {
-             if (typeof YT !== 'undefined' && YT.PlayerState && [YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(event.data)) {
-                if(state.currentMediaType !== 'audio' || (state.currentAudioPlayer && state.currentAudioPlayer.paused)) {
+            if (typeof YT !== 'undefined' && YT.PlayerState && [YT.PlayerState.PAUSED, YT.PlayerState.ENDED].includes(event.data)) {
+                if (state.currentMediaType !== 'audio' || (state.currentAudioPlayer && state.currentAudioPlayer.paused)) {
                     state.isAudioPlaying = false;
                     togglePlayPauseButtons(false);
                 }
@@ -623,7 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const activePlaylistElement = document.querySelector(`#MusicContent .music-playlist[id="${state.activePlaylist}"].active`);
         if (!activePlaylistElement) return;
-
 
         const progressBar = activePlaylistElement.querySelector('.progress-bar');
         const timeCurrent = activePlaylistElement.querySelector('.time-current');
@@ -690,15 +681,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (state.youtubePlayer?.stopVideo && state.currentMediaType === 'youtube' && currentYTVideoId !== youtubeId) {
                 state.youtubePlayer.stopVideo();
             }
-            stopProgressTimer(); // Stop timer for old track
+            stopProgressTimer();
         }
 
-        setActiveMusicTrackUI(thumbnail, 'youtube', clickedPlaylist); // UI update for THIS playlist
+        setActiveMusicTrackUI(thumbnail, 'youtube', clickedPlaylist);
 
         if (!state.youtubeAPIReady || !state.youtubePlayer || typeof state.youtubePlayer.loadVideoById !== 'function') {
             state.queuedYouTubeVideoId = youtubeId;
-            setupYouTubePlayer(); // Ensure player is ready or being set up
-            togglePlayPauseButtons(false); // Assume not playing until API is ready and loads
+            setupYouTubePlayer();
+            togglePlayPauseButtons(false);
             return;
         }
 
@@ -724,25 +715,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (state.currentPlayingThumbnail !== thumbnail || state.currentMediaType !== 'audio') {
             if (state.youtubePlayer?.stopVideo) state.youtubePlayer.stopVideo();
-            stopProgressTimer(); // Stop timer for old track
+            stopProgressTimer();
         }
 
-        setActiveMusicTrackUI(thumbnail, 'audio', clickedPlaylist); // UI update for THIS playlist
+        setActiveMusicTrackUI(thumbnail, 'audio', clickedPlaylist);
 
         const audioPlayer = state.currentAudioPlayer;
-        const progressBar = clickedPlaylist.querySelector('.progress-bar'); // Get from clickedPlaylist
-        const timeCurrent = clickedPlaylist.querySelector('.time-current'); // Get from clickedPlaylist
+        const progressBar = clickedPlaylist.querySelector('.progress-bar');
+        const timeCurrent = clickedPlaylist.querySelector('.time-current');
 
         if (audioPlayer.getAttribute('src') !== audioSrc || audioPlayer.ended) {
             audioPlayer.setAttribute('src', audioSrc);
-            audioPlayer.load(); // Important to load the new source
+            audioPlayer.load();
         }
 
         audioPlayer.volume = state.currentVolume;
         audioPlayer.muted = false;
 
         const onCanPlay = () => {
-             // Use data from thumbnail, not potentially stale global player if src just changed
             updatePlayerDisplayForPlaylist(clickedPlaylist, thumbnail.dataset.cover, thumbnail.dataset.title, thumbnail.dataset.artist, audioPlayer.currentTime, audioPlayer.duration, audioPlayer.duration ? (audioPlayer.currentTime / audioPlayer.duration) * 100 : 0);
             if (autoPlay) {
                 audioPlayer.play().catch(error => {
@@ -754,9 +744,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.isAudioPlaying = false;
                 togglePlayPauseButtons(false);
             }
-            audioPlayer.removeEventListener('canplay', onCanPlay); // Clean up
+            audioPlayer.removeEventListener('canplay', onCanPlay);
         };
-        audioPlayer.removeEventListener('canplay', onCanPlay); // Ensure no duplicates
+        audioPlayer.removeEventListener('canplay', onCanPlay);
         audioPlayer.addEventListener('canplay', onCanPlay);
 
         audioPlayer.onloadedmetadata = () => updatePlayerDisplayForPlaylist(clickedPlaylist, thumbnail.dataset.cover, thumbnail.dataset.title, thumbnail.dataset.artist, 0, audioPlayer.duration, 0);
@@ -772,40 +762,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (audioPlayer.duration && !isNaN(audioPlayer.duration)) audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
             };
         }
-        
+
         if (audioPlayer.getAttribute('src') === audioSrc && audioPlayer.paused && autoPlay) {
             audioPlayer.play().catch(error => { console.warn("Resume play prevented:", error); state.isAudioPlaying = false; togglePlayPauseButtons(false); });
-        } else if (audioPlayer.getAttribute('src') !== audioSrc && autoPlay) { // If src is new and should autoplay
-             audioPlayer.load(); // Will trigger 'canplay'
+        } else if (audioPlayer.getAttribute('src') !== audioSrc && autoPlay) {
+            audioPlayer.load();
         } else if (audioPlayer.getAttribute('src') !== audioSrc && !autoPlay) {
-             audioPlayer.load(); // Load but don't autoplay
+            audioPlayer.load();
         }
     };
 
     const startProgressTimer = (mediaPlayerInstance, progressBarElement, timeDisplayElement) => {
-        stopProgressTimer(); // Clear any existing timer
-    
-        // Ensure we're working with the elements from the currently active playlist
-        // This is crucial if the timer was started for a playlist that is no longer active.
+        stopProgressTimer();
+
         const updateUITargets = () => {
             const activeVisiblePlaylist = document.querySelector(`#MusicContent .music-playlist[id="${state.activePlaylist}"].active`);
-            if (!activeVisiblePlaylist) return null; // No active playlist to update
-    
+            if (!activeVisiblePlaylist) return null;
+
             return {
                 progressBar: activeVisiblePlaylist.querySelector('.progress-bar'),
                 timeDisplay: activeVisiblePlaylist.querySelector('.time-current')
             };
         };
-    
+
         state.progressInterval = setInterval(() => {
             const targets = updateUITargets();
-            if (!targets) { // If no active playlist, or elements not found, stop.
+            if (!targets) {
                 stopProgressTimer();
                 return;
             }
-    
+
             let currentTime = 0, duration = 0, isMediaEffectivelyPlaying = false;
-    
+
             if (mediaPlayerInstance === state.currentAudioPlayer && state.currentMediaType === 'audio' &&
                 mediaPlayerInstance.HAVE_METADATA <= mediaPlayerInstance.readyState &&
                 !mediaPlayerInstance.paused && !mediaPlayerInstance.ended && !isNaN(mediaPlayerInstance.duration)) {
@@ -813,15 +801,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration = mediaPlayerInstance.duration;
                 isMediaEffectivelyPlaying = true;
             } else if (mediaPlayerInstance === state.youtubePlayer && state.currentMediaType === 'youtube' &&
-                       typeof mediaPlayerInstance.getCurrentTime === 'function' &&
-                       typeof mediaPlayerInstance.getDuration === 'function' &&
-                       typeof YT !== 'undefined' && YT.PlayerState) {
+                typeof mediaPlayerInstance.getCurrentTime === 'function' &&
+                typeof mediaPlayerInstance.getDuration === 'function' &&
+                typeof YT !== 'undefined' && YT.PlayerState) {
                 const ytState = mediaPlayerInstance.getPlayerState();
                 if ([YT.PlayerState.PLAYING, YT.PlayerState.BUFFERING].includes(ytState)) {
                     currentTime = mediaPlayerInstance.getCurrentTime();
                     duration = mediaPlayerInstance.getDuration();
                     isMediaEffectivelyPlaying = true;
-    
+
                     const timeDurationEl = targets.progressBar?.parentElement?.querySelector('.time-duration');
                     if (timeDurationEl) {
                         const currentDisplayedDuration = timeDurationEl.textContent;
@@ -832,22 +820,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-    
+
             if (isMediaEffectivelyPlaying) {
                 if (duration > 0 && !isNaN(duration)) {
                     const progress = (currentTime / duration) * 100;
                     if (targets.progressBar) targets.progressBar.value = progress;
                     if (targets.timeDisplay) targets.timeDisplay.textContent = formatTime(currentTime);
-                } else { // Handle cases where duration might be 0 or NaN (e.g., live stream, error)
+                } else {
                     if (targets.progressBar) targets.progressBar.value = 0;
                     if (targets.timeDisplay) targets.timeDisplay.textContent = formatTime(0);
                 }
-            } else {
-                 // If media is not effectively playing, but the timer is running,
-                 // it means the state changed (e.g., paused, ended).
-                 // The onpause/onended/onStateChange handlers should ideally call stopProgressTimer.
-                 // This is a fallback.
-                // stopProgressTimer();
             }
         }, 500);
     };
@@ -858,7 +840,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!thumbnailsScrollArea) return;
         const scrollAreaWidth = thumbnailsScrollArea.offsetWidth;
         const thumbWidth = thumbnail.offsetWidth;
-        const thumbScrollLeft = thumbnail.offsetLeft; // Position relative to its offsetParent
+        const thumbScrollLeft = thumbnail.offsetLeft;
         const targetScrollLeft = thumbScrollLeft - (scrollAreaWidth / 2) + (thumbWidth / 2);
         thumbnailsScrollArea.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
     };
@@ -873,27 +855,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.dragStartX = (e.pageX || e.touches?.[0].pageX) - thumbnails.offsetLeft;
                 state.dragScrollLeft = thumbnails.scrollLeft;
                 thumbnails.style.cursor = 'grabbing';
-                thumbnails.style.userSelect = 'none'; // CSS
-                thumbnails.style.scrollSnapType = 'none'; // Disable snap during drag
+                thumbnails.style.userSelect = 'none';
+                thumbnails.style.scrollSnapType = 'none';
             };
             const handleDragMove = (e) => {
                 if (!state.isDragging) return;
-                e.preventDefault(); // Prevent page scroll on touch devices
+                e.preventDefault();
                 const x = (e.pageX || e.touches?.[0].pageX) - thumbnails.offsetLeft;
-                const walk = (x - state.dragStartX) * 1.5; // Adjust multiplier for drag speed
+                const walk = (x - state.dragStartX) * 1.5;
                 thumbnails.scrollLeft = state.dragScrollLeft - walk;
             };
             const handleDragEnd = () => {
                 if (!state.isDragging) return;
                 state.isDragging = false;
                 thumbnails.style.cursor = 'grab';
-                thumbnails.style.userSelect = ''; // CSS
-                thumbnails.style.scrollSnapType = 'x mandatory'; // Re-enable snap
+                thumbnails.style.userSelect = '';
+                thumbnails.style.scrollSnapType = 'x mandatory';
             };
 
             ['mousedown', 'touchstart'].forEach(type => thumbnails.addEventListener(type, handleDragStart, type === 'touchstart' ? { passive: true } : false));
-            ['mousemove', 'touchmove'].forEach(type => document.addEventListener(type, handleDragMove, type === 'touchmove' ? { passive: false } : false)); // Listen on document for move/end
-            ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(type => document.addEventListener(type, handleDragEnd)); // Listen on document
+            ['mousemove', 'touchmove'].forEach(type => document.addEventListener(type, handleDragMove, type === 'touchmove' ? { passive: false } : false));
+            ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(type => document.addEventListener(type, handleDragEnd));
         });
     };
 
@@ -901,32 +883,30 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.slideshows.forEach(slideshowElement => {
             const container = slideshowElement.querySelector('.slideshow__container');
             if (!container) return;
-            let startX = 0, isMouseDown = false, hasSwiped = false; // hasSwiped to distinguish click from swipe
+            let startX = 0, isMouseDown = false, hasSwiped = false;
 
             container.addEventListener('mousedown', (e) => { startX = e.pageX; isMouseDown = true; hasSwiped = false; container.style.cursor = 'grabbing'; container.style.userSelect = 'none'; });
-            container.addEventListener('mousemove', (e) => { if (isMouseDown && Math.abs(e.pageX - startX) > 10) hasSwiped = true; }); // Detect if significant movement occurred
+            container.addEventListener('mousemove', (e) => { if (isMouseDown && Math.abs(e.pageX - startX) > 10) hasSwiped = true; });
             container.addEventListener('mouseup', (e) => {
                 container.style.cursor = 'grab'; container.style.userSelect = '';
-                if (isMouseDown && hasSwiped) { // Only trigger swipe if mouse moved significantly
+                if (isMouseDown && hasSwiped) {
                     const distance = e.pageX - startX;
                     if (Math.abs(distance) >= state.swipeThreshold) moveSlide(slideshowElement, distance > 0 ? -1 : 1);
                 }
                 isMouseDown = false; startX = 0; hasSwiped = false;
             });
-            container.addEventListener('mouseleave', () => { if (isMouseDown) { isMouseDown = false; startX = 0; hasSwiped = false; container.style.cursor = 'grab'; container.style.userSelect = ''; }});
+            container.addEventListener('mouseleave', () => { if (isMouseDown) { isMouseDown = false; startX = 0; hasSwiped = false; container.style.cursor = 'grab'; container.style.userSelect = ''; } });
 
-            // Touch events for slideshow
-            container.addEventListener('touchstart', (e) => { if (e.touches.length === 1) { state.slideshowSwipeStartX = e.touches[0].pageX; state.isSlideshowSwiping = false; }}, { passive: true });
+            container.addEventListener('touchstart', (e) => { if (e.touches.length === 1) { state.slideshowSwipeStartX = e.touches[0].pageX; state.isSlideshowSwiping = false; } }, { passive: true });
             container.addEventListener('touchmove', (e) => {
                 if (e.touches.length === 1 && state.slideshowSwipeStartX !== 0) {
                     if (Math.abs(e.touches[0].pageX - state.slideshowSwipeStartX) > 10 || state.isSlideshowSwiping) {
-                        state.isSlideshowSwiping = true; // Mark as swiping after minimal movement
-                        // e.preventDefault(); // Optional: prevent vertical scroll during horizontal swipe, test carefully
+                        state.isSlideshowSwiping = true;
                     }
                 }
-            }, { passive: true }); // Consider passive: false if preventDefault is needed and tested
+            }, { passive: true });
             container.addEventListener('touchend', (e) => {
-                if (e.changedTouches.length === 1 && state.isSlideshowSwiping) { // Only if swiping motion was detected
+                if (e.changedTouches.length === 1 && state.isSlideshowSwiping) {
                     const distance = e.changedTouches[0].pageX - state.slideshowSwipeStartX;
                     if (Math.abs(distance) >= state.swipeThreshold) moveSlide(slideshowElement, distance > 0 ? -1 : 1);
                 }
@@ -942,30 +922,29 @@ document.addEventListener('DOMContentLoaded', () => {
             volumeSlider.addEventListener('input', () => {
                 const newVolume = parseFloat(volumeSlider.value);
                 state.currentVolume = newVolume;
-                // Update all volume sliders if multiple exist (though usually one per active player)
                 document.querySelectorAll('.volume-slider').forEach(slider => { if (slider !== volumeSlider) slider.value = newVolume; });
 
                 if (state.currentAudioPlayer) { state.currentAudioPlayer.muted = false; state.currentAudioPlayer.volume = newVolume; }
                 if (state.currentMediaType === 'youtube' && state.youtubePlayer?.setVolume) { state.youtubePlayer.unMute(); state.youtubePlayer.setVolume(newVolume * 100); }
-                if (newVolume > 0) state.lastVolumeBeforeMute = newVolume; // Store last non-zero volume
+                if (newVolume > 0) state.lastVolumeBeforeMute = newVolume;
             });
         });
         document.querySelectorAll('.volume-button').forEach(volumeButton => {
             volumeButton.addEventListener('click', () => {
                 let isMutedCurrently = (state.currentMediaType === 'audio' && state.currentAudioPlayer) ? (state.currentAudioPlayer.muted || state.currentAudioPlayer.volume === 0) :
-                                      (state.currentMediaType === 'youtube' && state.youtubePlayer?.isMuted) ? state.youtubePlayer.isMuted() : state.currentVolume === 0;
-                if (!isMutedCurrently) { // If not muted, then mute
+                    (state.currentMediaType === 'youtube' && state.youtubePlayer?.isMuted) ? state.youtubePlayer.isMuted() : state.currentVolume === 0;
+                if (!isMutedCurrently) {
                     if (state.currentVolume > 0) state.lastVolumeBeforeMute = state.currentVolume;
-                    else if (state.lastVolumeBeforeMute === 0) state.lastVolumeBeforeMute = 0.1; // Edge case: unmuting from true zero
+                    else if (state.lastVolumeBeforeMute === 0) state.lastVolumeBeforeMute = 0.1;
 
                     if (state.currentAudioPlayer) state.currentAudioPlayer.muted = true;
                     else if (state.youtubePlayer?.mute) state.youtubePlayer.mute();
-                    state.currentVolume = 0; // Reflect muted state
-                } else { // If muted, then unmute
-                    const restoreVolume = state.lastVolumeBeforeMute > 0 ? state.lastVolumeBeforeMute : 0.1; // Ensure some volume
+                    state.currentVolume = 0;
+                } else {
+                    const restoreVolume = state.lastVolumeBeforeMute > 0 ? state.lastVolumeBeforeMute : 0.1;
                     if (state.currentAudioPlayer) { state.currentAudioPlayer.muted = false; state.currentAudioPlayer.volume = restoreVolume; }
                     else if (state.youtubePlayer?.unMute) { state.youtubePlayer.unMute(); state.youtubePlayer.setVolume(restoreVolume * 100); }
-                    state.currentVolume = restoreVolume; // Reflect unmuted state
+                    state.currentVolume = restoreVolume;
                 }
                 document.querySelectorAll('.volume-slider').forEach(slider => slider.value = state.currentVolume);
             });
@@ -978,7 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = button.dataset.submenuTarget; if (!targetId) return;
             nav.querySelectorAll('button').forEach(btn => { btn.classList.remove('active'); btn.setAttribute('aria-current', 'false'); });
             button.classList.add('active');
-            button.setAttribute('aria-current', 'true'); // Use 'true' for aria-current
+            button.setAttribute('aria-current', 'true');
             showSubContent(targetId);
         })));
 
@@ -992,9 +971,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }));
             slideshow.querySelectorAll('video').forEach(video => {
                 const playButton = video.closest('.slideshow__item')?.querySelector('.slideshow__play-button');
-                video.addEventListener('ended', () => { if (playButton) { playButton.classList.remove('hidden'); playButton.setAttribute('aria-label', 'Play Video'); }});
-                video.addEventListener('pause', () => { if (playButton && !video.ended) { playButton.classList.remove('hidden'); playButton.setAttribute('aria-label', 'Play Video'); }});
-                video.addEventListener('play', () => { if (playButton) { playButton.classList.add('hidden'); playButton.setAttribute('aria-label', 'Pause Video'); }});
+                video.addEventListener('ended', () => { if (playButton) { playButton.classList.remove('hidden'); playButton.setAttribute('aria-label', 'Play Video'); } });
+                video.addEventListener('pause', () => { if (playButton && !video.ended) { playButton.classList.remove('hidden'); playButton.setAttribute('aria-label', 'Play Video'); } });
+                video.addEventListener('play', () => { if (playButton) { playButton.classList.add('hidden'); playButton.setAttribute('aria-label', 'Pause Video'); } });
             });
         });
 
@@ -1035,9 +1014,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     songData.progress = songData.duration && songData.duration > 0 ? (songData.currentTime / songData.duration) * 100 : 0;
 
                     updatePlayerDisplayForPlaylist(targetPlaylistElement, songData.cover, songData.title, songData.artist, songData.currentTime, songData.duration, songData.progress);
-                    
-                    targetPlaylistElement.querySelectorAll('.music-thumbnail:not([href]).active').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false');});
-                    
+
+                    targetPlaylistElement.querySelectorAll('.music-thumbnail:not([href]).active').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+
                     const currentGlobalThumbSrc = state.currentPlayingThumbnail.dataset.musicSrc;
                     const currentGlobalThumbYT = state.currentPlayingThumbnail.dataset.youtubeId ? extractYouTubeId(state.currentPlayingThumbnail.dataset.youtubeId) : null;
                     const currentThumbInNewPlaylist = Array.from(targetPlaylistElement.querySelectorAll('.music-thumbnail:not([href])'))
@@ -1045,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const tSrc = t.dataset.musicSrc;
                             const tYT = t.dataset.youtubeId ? extractYouTubeId(t.dataset.youtubeId) : null;
                             return (state.currentMediaType === 'audio' && tSrc && tSrc === currentGlobalThumbSrc) ||
-                                   (state.currentMediaType === 'youtube' && tYT && tYT === currentGlobalThumbYT);
+                                (state.currentMediaType === 'youtube' && tYT && tYT === currentGlobalThumbYT);
                         });
 
                     if (currentThumbInNewPlaylist) {
@@ -1060,16 +1039,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         const player = state.currentMediaType === 'audio' ? state.currentAudioPlayer : state.youtubePlayer;
                         if (player) startProgressTimer(player, progressBar, timeCurrent);
                     }
-                } else { // Not playing or no current thumbnail
+                } else {
                     const firstThumb = targetPlaylistElement.querySelector('.music-thumbnail:not([href])');
                     if (firstThumb) {
                         updatePlayerDisplayForPlaylist(targetPlaylistElement, firstThumb.dataset.cover, firstThumb.dataset.title, firstThumb.dataset.artist);
                     } else {
                         updatePlayerDisplayForPlaylist(targetPlaylistElement, null, 'No songs available', '');
                     }
-                    targetPlaylistElement.querySelectorAll('.music-thumbnail:not([href]).active').forEach(t => {t.classList.remove('active'); t.setAttribute('aria-selected', 'false');});
+                    targetPlaylistElement.querySelectorAll('.music-thumbnail:not([href]).active').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
                 }
-                togglePlayPauseButtons(state.isAudioPlaying); // Sync buttons for the new active playlist
+                togglePlayPauseButtons(state.isAudioPlaying);
             }
         }));
 
@@ -1077,16 +1056,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const isPlayingThis = state.currentPlayingThumbnail === thumbnail && state.isAudioPlaying;
             const isPausedOnThis = state.currentPlayingThumbnail === thumbnail && !state.isAudioPlaying;
 
-            if (isPlayingThis) { // Clicked on the playing song's thumbnail: Pause it
+            if (isPlayingThis) {
                 if (state.currentMediaType === 'audio' && state.currentAudioPlayer) state.currentAudioPlayer.pause();
                 else if (state.currentMediaType === 'youtube' && state.youtubePlayer?.pauseVideo) state.youtubePlayer.pauseVideo();
-            } else if (isPausedOnThis) { // Clicked on the paused song's thumbnail: Resume it
-                if (state.currentMediaType === 'audio' && state.currentAudioPlayer?.paused) state.currentAudioPlayer.play().catch(e=>console.warn("Resume audio failed:", e));
+            } else if (isPausedOnThis) {
+                if (state.currentMediaType === 'audio' && state.currentAudioPlayer?.paused) state.currentAudioPlayer.play().catch(e => console.warn("Resume audio failed:", e));
                 else if (state.currentMediaType === 'youtube' && state.youtubePlayer?.playVideo && typeof YT !== 'undefined' && YT.PlayerState) {
                     const ytState = state.youtubePlayer.getPlayerState?.();
                     if ([YT.PlayerState.PAUSED, YT.PlayerState.CUED, YT.PlayerState.ENDED].includes(ytState)) state.youtubePlayer.playVideo();
                 }
-            } else { // Clicked on a new/different song's thumbnail: Play it
+            } else {
                 const rawYoutubeId = thumbnail.dataset.youtubeId;
                 const audioSrc = thumbnail.dataset.musicSrc;
                 if (rawYoutubeId) playYouTubeAudio(rawYoutubeId, thumbnail, true);
@@ -1100,24 +1079,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const progressBar = playlistElement.querySelector('.progress-bar');
 
             playButton?.addEventListener('click', () => {
-                if (!playlistElement.classList.contains('active')) return; // Button only works if its playlist is active
+                if (!playlistElement.classList.contains('active')) return;
 
-                let targetThumb = playlistElement.querySelector('.music-thumbnail.active:not([href])'); // Current active thumb in this playlist
-                
-                if (!targetThumb) { // If no thumb is active in this playlist, default to the first one
+                let targetThumb = playlistElement.querySelector('.music-thumbnail.active:not([href])');
+
+                if (!targetThumb) {
                     targetThumb = playlistElement.querySelector('.music-thumbnail:not([href])');
                 }
-                if (!targetThumb) return; // No playable track
+                if (!targetThumb) return;
 
                 const isThisPlaylistTrackCurrentlyPaused = state.currentPlayingThumbnail === targetThumb && !state.isAudioPlaying;
 
-                if (isThisPlaylistTrackCurrentlyPaused) { // Resume if this specific track was paused
+                if (isThisPlaylistTrackCurrentlyPaused) {
                     if (state.currentMediaType === 'audio' && state.currentAudioPlayer?.paused) state.currentAudioPlayer.play().catch(e => console.warn("Resume audio failed:", e));
                     else if (state.currentMediaType === 'youtube' && state.youtubePlayer?.playVideo && typeof YT !== 'undefined' && YT.PlayerState) {
                         const ytState = state.youtubePlayer.getPlayerState?.();
                         if ([YT.PlayerState.PAUSED, YT.PlayerState.CUED, YT.PlayerState.ENDED].includes(ytState)) state.youtubePlayer.playVideo();
                     }
-                } else { // Play this track (it's new, different, or was not the one paused globally)
+                } else {
                     const audioSrc = targetThumb.dataset.musicSrc;
                     const rawYoutubeId = targetThumb.dataset.youtubeId;
                     if (rawYoutubeId) playYouTubeAudio(rawYoutubeId, targetThumb, true);
@@ -1126,7 +1105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             pauseButton?.addEventListener('click', () => {
-                // Pause button always pauses global player if its playlist is active and music is playing
                 if (playlistElement.classList.contains('active') && state.isAudioPlaying) {
                     if (state.currentMediaType === 'audio' && state.currentAudioPlayer && !state.currentAudioPlayer.paused) {
                         state.currentAudioPlayer.pause();
@@ -1141,10 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             progressBar?.addEventListener('input', () => {
                 if (!playlistElement.classList.contains('active') || !state.currentPlayingThumbnail) return;
-                // Ensure progress bar manipulation only affects the track if it's the one being displayed/controlled by this playlist.
-                // This is implicitly handled if currentPlayingThumbnail's playlist is this playlistElement.
                 if (state.currentPlayingThumbnail.closest('.music-playlist') !== playlistElement) return;
-
 
                 if (state.currentMediaType === 'audio' && state.currentAudioPlayer?.duration && !isNaN(state.currentAudioPlayer.duration)) {
                     state.currentAudioPlayer.currentTime = (progressBar.value / 100) * state.currentAudioPlayer.duration;
@@ -1167,9 +1142,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pauseBtn = activeMusicPlaylistElement.querySelector('.pause-button');
                 if (playBtn && !playBtn.hidden) playBtn.click(); else if (pauseBtn && !pauseBtn.hidden) pauseBtn.click();
             } else if (e.key === 'ArrowLeft') {
-                const activeSlideshow = document.querySelector('.slideshow-section.active .slideshow:not(#MusicContent .slideshow)'); // Exclude music slideshows
+                const activeSlideshow = document.querySelector('.slideshow-section.active .slideshow:not(#MusicContent .slideshow)');
                 if (activeSlideshow) { e.preventDefault(); moveSlide(activeSlideshow, -1); }
-                else if (activeMusicPlaylistElement && state.isAudioPlaying && (state.currentAudioPlayer || state.youtubePlayer)) { // Seek if music is playing
+                else if (activeMusicPlaylistElement && state.isAudioPlaying && (state.currentAudioPlayer || state.youtubePlayer)) {
                     e.preventDefault();
                     if (state.currentMediaType === 'audio' && state.currentAudioPlayer) state.currentAudioPlayer.currentTime = Math.max(0, state.currentAudioPlayer.currentTime - 5);
                     else if (state.currentMediaType === 'youtube' && state.youtubePlayer?.seekTo && state.youtubePlayer.getCurrentTime) state.youtubePlayer.seekTo(Math.max(0, state.youtubePlayer.getCurrentTime() - 5), true);
@@ -1177,7 +1152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (e.key === 'ArrowRight') {
                 const activeSlideshow = document.querySelector('.slideshow-section.active .slideshow:not(#MusicContent .slideshow)');
                 if (activeSlideshow) { e.preventDefault(); moveSlide(activeSlideshow, 1); }
-                else if (activeMusicPlaylistElement && state.isAudioPlaying && (state.currentAudioPlayer || state.youtubePlayer)) { // Seek if music is playing
+                else if (activeMusicPlaylistElement && state.isAudioPlaying && (state.currentAudioPlayer || state.youtubePlayer)) {
                     e.preventDefault();
                     if (state.currentMediaType === 'audio' && state.currentAudioPlayer?.duration) state.currentAudioPlayer.currentTime = Math.min(state.currentAudioPlayer.duration, state.currentAudioPlayer.currentTime + 5);
                     else if (state.currentMediaType === 'youtube' && state.youtubePlayer?.seekTo && state.youtubePlayer.getDuration) {
@@ -1189,7 +1164,110 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Fungsi untuk menambahkan skema JSON-LD ke head
+    function addSchema(schemaData) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(schemaData);
+        document.head.appendChild(script);
+    }
+
+    // Mendefinisikan skema di sini agar bisa diakses oleh init()
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Lukman Wagiman - Portofolio",
+        "url": "https://lukmanwagiman.netlify.app/",
+        "description": "Portofolio visual dan audio Lukman Wagiman: fotografi, videografi, dan remix musik kreatif di Bekasi.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://lukmanwagiman.netlify.app/?s={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    };
+
+    const personProfessionalServiceSchema = {
+        "@context": "https://schema.org",
+        "@type": ["Person", "ProfessionalService"],
+        "@id": "https://lukmanwagiman.netlify.app/#lukmanwagiman",
+        "name": "Lukman Wagiman",
+        "url": "https://lukmanwagiman.netlify.app/",
+        "image": "https://lukmanwagiman.netlify.app/Img/Foto Profil.jpg",
+        "sameAs": [
+            "https://www.instagram.com/lukmanwagiman",
+            "https://www.youtube.com/Eoupxy" // GANTI DENGAN URL YOUTUBE CHANNEL ANDA
+        ],
+        "jobTitle": "Fotografer, Videografer, Remixer Musik",
+        "description": "Lukman Wagiman adalah seorang fotografer, videografer, dan remixer musik profesional yang berbasis di Bekasi, Indonesia. Aktif berkarya lewat visual dan musik, menyajikan karya kreatif penuh gaya dan orisinalitas.",
+        "email": "mailto:Wlukman1009@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bekasi",
+            "addressRegion": "Jawa Barat",
+            "addressCountry": "ID"
+        },
+        "knowsAbout": [
+            "Fotografi Outdoor", "Fotografi Lamaran", "Fotografi Indoor", "Fotografi Event",
+            "Video Promosi", "Video Film Pendek", "Video Sinematik",
+            "Remix Musik Korea", "Remix Musik Indonesia", "Produksi Musik"
+        ],
+        "serviceType": ["Fotografi", "Videografi", "Remix Musik"],
+        "areaServed": {
+            "@type": "City",
+            "name": "Bekasi",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bekasi",
+                "addressRegion": "Jawa Barat",
+                "addressCountry": "ID"
+            }
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Layanan Kreatif Lukman Wagiman",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "serviceType": "Fotografi",
+                        "name": "Jasa Fotografi Profesional di Bekasi",
+                        "description": "Layanan fotografi oleh Lukman Wagiman di Bekasi, termasuk outdoor, lamaran, indoor, dan acara.",
+                        "provider": { "@id": "https://lukmanwagiman.netlify.app/#lukmanwagiman" }
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "serviceType": "Videografi",
+                        "name": "Jasa Videografi Profesional di Bekasi",
+                        "description": "Layanan videografi oleh Lukman Wagiman di Bekasi untuk promosi, film pendek, dan sinematik.",
+                        "provider": { "@id": "https://lukmanwagiman.netlify.app/#lukmanwagiman" }
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "serviceType": "Remix Musik",
+                        "name": "Jasa Remix Musik oleh Eoupxy",
+                        "description": "Jasa remix musik berbagai genre oleh Lukman Wagiman (Eoupxy).",
+                        "provider": { "@id": "https://lukmanwagiman.netlify.app/#lukmanwagiman" }
+                    }
+                }
+            ]
+        }
+    };
+
     const init = () => {
+        // Tambahkan skema ke head saat inisialisasi
+        addSchema(websiteSchema);
+        addSchema(personProfessionalServiceSchema);
+
         setupYouTubePlayer();
         setupMusicThumbnailDrag();
         setupSlideshowDrag();
@@ -1197,16 +1275,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setupEventListeners();
         if (elements.globalAudioPlayer) elements.globalAudioPlayer.volume = state.currentVolume;
 
-        // Click the first category button to initialize content display
         if (elements.categoryNavButtons.length > 0) {
             elements.categoryNavButtons[0].click();
-        } else { // Fallback if no category buttons, e.g. directly show music if that's the only content
+        } else {
             const musicContent = document.getElementById('MusicContent');
             if (musicContent) {
-                 showCategoryContent('MusicContent');
+                showCategoryContent('MusicContent');
             }
         }
-        console.log("App initialized. Music player cross-playlist pause/play consistency improved.");
+        console.log("App initialized. Schema added. Music player cross-playlist pause/play consistency improved.");
     };
 
     init();
